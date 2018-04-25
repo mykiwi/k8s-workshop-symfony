@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: app
 spec:
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -11,6 +11,6 @@ spec:
     spec:
       containers:
       - name: app
-        image: mykiwi/sfdemo:v1
+        image: mykiwi/sfdemo:v2
         ports:
         - containerPort: 80
