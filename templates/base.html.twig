@@ -88,6 +88,7 @@
         {% endblock %}
 
         <div class="container body-container">
+            <div class="alert alert-warning text-center" role="alert">App running on <strong>{{ hostname() }}</strong></div>
             {% block body %}
                 <div class="row">
                     <div id="main" class="col-sm-9">

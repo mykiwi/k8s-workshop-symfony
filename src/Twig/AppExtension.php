@@ -59,6 +59,7 @@ class AppExtension extends AbstractExtension
     {
         return [
             new TwigFunction('locales', [$this, 'getLocales']),
+            new TwigFunction('hostname', 'gethostname'),
         ];
     }
 
