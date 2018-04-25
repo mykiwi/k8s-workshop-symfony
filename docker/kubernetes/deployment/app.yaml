@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: app
 spec:
-  replicas: 2
+  replicas: 3
   template:
     metadata:
       labels:
@@ -14,3 +14,7 @@ spec:
         image: mykiwi/sfdemo:v2
         ports:
         - containerPort: 80
+        env:
+        - name: REDIS_URL
+          value: redis://redis-svc
+        # value: redis-svc.default.svc.cluster.local

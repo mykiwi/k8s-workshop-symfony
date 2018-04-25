@@ -110,6 +110,9 @@
     "php-cs-fixer/diff": {
         "version": "v1.2.0"
     },
+    "predis/predis": {
+        "version": "v1.1.1"
+    },
     "psr/cache": {
         "version": "1.0.1"
     },
@@ -138,6 +141,15 @@
             "branch": "master",
             "version": "4.0",
             "ref": "576d653444dade07f272c889d52fe4594caa4fc3"
+        }
+    },
+    "snc/redis-bundle": {
+        "version": "2.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "2.0",
+            "ref": "e9c58bfc414cfb7f06e8e5ae9f589868498f5d6a"
         }
     },
     "swiftmailer/swiftmailer": {

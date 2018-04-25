@@ -1,0 +1,12 @@
+snc_redis:
+    clients:
+        default:
+            type: predis
+            alias: default
+            dsn: "%env(REDIS_URL)%"
+    session:
+        client: default
+
+framework:
+    session:
+        handler_id: snc_redis.session.handler

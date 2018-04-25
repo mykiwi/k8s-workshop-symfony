@@ -56,7 +56,8 @@ COPY . /var/www/html/
 ENV APP_ENV=prod \
     APP_SECRET=67d829bf61dc5f87a73fd814e2c9f629 \
     DATABASE_URL="sqlite:////var/www/html/var/blog.sqlite" \
-    MAILER_URL=null://localhost
+    MAILER_URL=null://localhost \
+    REDIS_URL=redis://localhost
 
 RUN composer dump-autoload --classmap-authoritative --no-dev && \
     composer run-script post-install-cmd --no-dev && \
