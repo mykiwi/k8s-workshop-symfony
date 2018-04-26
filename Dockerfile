@@ -17,7 +17,6 @@ RUN a2enmod rewrite && \
         libicu-dev \
         libjpeg-dev \
         libpng-dev \
-        libsqlite3-dev \
         libxml2-dev \
         openssl \
         openssh-client \
@@ -36,7 +35,7 @@ RUN a2enmod rewrite && \
         json \
         mbstring \
         opcache \
-        pdo_sqlite \
+        pdo_mysql \
         xml \
         zip
 
@@ -55,7 +54,7 @@ COPY . /var/www/html/
 
 ENV APP_ENV=prod \
     APP_SECRET=67d829bf61dc5f87a73fd814e2c9f629 \
-    DATABASE_URL="sqlite:////var/www/html/var/blog.sqlite" \
+    DATABASE_URL=mysql://localhost \
     MAILER_URL=null://localhost \
     REDIS_URL=redis://localhost
 
@@ -63,7 +62,4 @@ RUN composer dump-autoload --classmap-authoritative --no-dev && \
     composer run-script post-install-cmd --no-dev && \
     rm -rf var/cache/* && \
     APP_ENV=prod bin/console cache:warmup && \
-    bin/console doctrine:database:create --no-interaction && \
-    bin/console doctrine:schema:create --no-interaction && \
-    bin/console doctrine:fixtures:load --no-interaction && \
     chown -R www-data:www-data /var/www/html
