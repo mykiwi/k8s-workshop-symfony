@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: app
-        image: mykiwi/sfdemo:v2
+        image: mykiwi/sfdemo:v3
         ports:
         - containerPort: 80
         env:
