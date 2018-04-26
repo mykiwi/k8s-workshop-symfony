@@ -11,10 +11,13 @@ spec:
     spec:
       containers:
       - name: app
-        image: mykiwi/sfdemo:v3
+        image: mykiwi/sfdemo:v4
         ports:
         - containerPort: 80
         env:
         - name: REDIS_URL
           value: redis://redis-svc
         # value: redis-svc.default.svc.cluster.local
+        - name: DATABASE_URL
+          value: mysql://root:@mysql-svc:3306/db
+        # value: mysql-svc.default.svc.cluster.local
