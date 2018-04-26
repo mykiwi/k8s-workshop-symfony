@@ -1,19 +1,32 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: mysql
+  name: cloudsqlproxy
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: mysql
+        app: cloudsqlproxy
     spec:
       containers:
-      - name: mysql
-        image: mysql:5.7
+      - image: b.gcr.io/cloudsql-docker/gce-proxy:latest
+        name: cloudsqlproxy
+        command:
+        - /cloud_sql_proxy
+        - -dir=/cloudsql
+        - -instances=workshop:europe-west1:blog=tcp:0.0.0.0:3306
+        - -credential_file=/credentials/credentials.json
         ports:
         - containerPort: 3306
-        env:
-        - name: MYSQL_ALLOW_EMPTY_PASSWORD
-          value: 'yes'
+        volumeMounts:
+        - mountPath: /cloudsql
+          name: cloudsql
+        - mountPath: /credentials
+          name: service-account-token
+      volumes:
+      - name: cloudsql
+        emptyDir:
+      - name: service-account-token
+        secret:
+          secretName: service-account-token

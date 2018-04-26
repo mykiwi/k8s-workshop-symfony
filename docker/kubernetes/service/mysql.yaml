@@ -3,10 +3,10 @@ kind: Service
 metadata:
   name: mysql-svc
   labels:
-    app: mysql
+    app: cloudsqlproxy
 spec:
   ports:
   - port: 3306
     targetPort: 3306
   selector:
-    app: mysql
+    app: cloudsqlproxy
